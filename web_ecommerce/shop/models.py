@@ -9,7 +9,7 @@ class Category(models.Model):
 
     #creation du premier vue
     class Meta:
-        ord = ['-added_date']
+        ordering = ['-added_date']
 
 
 # class product
@@ -23,4 +23,4 @@ class Product(models.Model):
 
     #creation du premier vue
     class Meta:
-        ord = ['-added_date']
+        ordering = ['-added_date']
