@@ -7,9 +7,13 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
     added_date = models.DateTimeField(auto_now=True)
 
-    #creation du premier vue
+    # creation du premier vue
     class Meta:
         ordering = ['-added_date']
+    
+    # pour voir les noms apparitres dans la table admin panal
+    def __str__(self):
+        return self.name
 
 
 # class product
@@ -24,3 +28,7 @@ class Product(models.Model):
     #creation du premier vue
     class Meta:
         ordering = ['-added_date']
+
+    # pour voir les noms apparitres dans la table admin panal
+    def __str__(self):
+        return self.title
