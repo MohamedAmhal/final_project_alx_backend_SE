@@ -68,6 +68,9 @@
     }else{
         basket = JSON.parse(localStorage.getItem('basket'))
     }
+
+
+
     $(document).on('click', '.tdn', function(){
         console.log('add');
         var id_item = this.id.toString();
@@ -82,22 +85,23 @@
         document.getElementById('basket').innerHTML = 'Basket(' + Object.keys(basket).length + ')';
         console.log(Object.keys(basket).length);
     });
+
+
     display_basket(basket);
+
+
 
     function display_basket(basket){
         var panierString = "";
         var index = 1;
         panierString += "<h6>This is your list:</h6>";
         for(var x in basket){
-            panierString += index + "=>";
-            panierString += document.getElementById("aa"+x).innerHTML +" ->Qte :" + basket[x] + "</br>";
+            panierString += index + ".";
+            panierString += document.getElementById("aa"+x).innerHTML +" =>Qte :" + basket[x] + "</br>";
             index += 1;
         }
         $('[data-toggle="popover"]').popover()
         document.getElementById('basket').setAttribute('data-content', panierString);
-
-
-
-    }
+    };
 </script>
  {% endblock %}
