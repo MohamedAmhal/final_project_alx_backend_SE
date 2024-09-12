@@ -16,3 +16,9 @@ def index(request):
     page = request.GET.get('page')
     product_object = paginator.get_page(page)
     return render(request, 'shop/index.html', {'product_object' : product_object})
+
+
+# create the second veiw product details:
+def details(request, id_pro):
+    product_object = Product.objects.get(id = id_pro)
+    return render(request, 'shop/details_product.html', {'product_object' : product_object})
