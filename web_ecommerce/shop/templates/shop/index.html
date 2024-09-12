@@ -100,6 +100,9 @@
             panierString += document.getElementById("aa"+x).innerHTML +" =>Qte :" + basket[x] + "</br>";
             index += 1;
         }
+
+        panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
+
         $('[data-toggle="popover"]').popover()
         document.getElementById('basket').setAttribute('data-content', panierString);
     };
