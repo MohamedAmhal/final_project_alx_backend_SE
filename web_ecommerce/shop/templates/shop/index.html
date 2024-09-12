@@ -25,7 +25,7 @@
                     <div class="card-title">{{ p.title }}</div>
                     <div style="color: orange;" class="card-text" >MAD {{ p.price }}</div>
                     <a href="{{ p.id }}" class="btn btn-warning">View</a>
-                    <button class="btn btn-success">Add</button>
+                    <button id="{{ p.id }}" class="btn tdn btn-success">Add</button>
                 </div>
             </div>
         </div>
@@ -58,3 +58,29 @@
         </div>
     </div>
 {% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+    if (localStorage.getItem('basket') == null)
+    {
+        var basket = {};
+    }else{
+        basket = JSON.parse(localStorage.getItem('basket'))
+    }
+    $(document).on('click', '.tdn', function(){
+        console.log('add');
+        var id_item = this.id.toString();
+        console.log(id_item);
+        if (basket[id_item] != undefined){
+            basket[id_item] = basket[id_item] + 1 ;
+        }else{
+            basket[id_item] = 1 ;
+        }
+        console.log(basket);
+        localStorage.setItem('basket', JSON.stringify(basket));
+        document.getElementById('basket').innerHTML = 'Basket(' + Object.keys(basket).length + ')';
+        console.log(Object.keys(basket).length);
+    });
+</script>
+ {% endblock %}
