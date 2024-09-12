@@ -18,14 +18,14 @@
 
     <div class="row">
         {% for p in product_object %}
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card">
                 <img src="{{ p.image }}" alt="" class="card-ing-top">
                 <div class="card-body">
                     <div class="card-title">{{ p.title }}</div>
                     <div style="color: orange;" class="card-text" >MAD {{ p.price }}</div>
                     <a href="{{ p.id }}" class="btn btn-warning">View</a>
-                    <button class="btn btn-success">Add To basket</button>
+                    <button class="btn btn-success">Add</button>
                 </div>
             </div>
         </div>
