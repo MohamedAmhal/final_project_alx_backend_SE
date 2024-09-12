@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+# Create the first view
+def index(request):
+    return render(request, 'shop/index.html')
