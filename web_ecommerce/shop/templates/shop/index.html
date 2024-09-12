@@ -82,5 +82,9 @@
         document.getElementById('basket').innerHTML = 'Basket(' + Object.keys(basket).length + ')';
         console.log(Object.keys(basket).length);
     });
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+        document.getElementById('basket').setAttribute('data-content', '<h6>This is your list</h6>')
+    })
 </script>
  {% endblock %}
