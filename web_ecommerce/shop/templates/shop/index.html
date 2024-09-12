@@ -22,7 +22,7 @@
             <div class="card">
                 <img src="{{ p.image }}" alt="" class="card-ing-top">
                 <div class="card-body">
-                    <div class="card-title">{{ p.title }}</div>
+                    <div id="aa{{ p.id }}" class="card-title">{{ p.title }}</div>
                     <div style="color: orange;" class="card-text" >MAD {{ p.price }}</div>
                     <a href="{{ p.id }}" class="btn btn-warning">View</a>
                     <button id="{{ p.id }}" class="btn tdn btn-success">Add</button>
@@ -82,9 +82,22 @@
         document.getElementById('basket').innerHTML = 'Basket(' + Object.keys(basket).length + ')';
         console.log(Object.keys(basket).length);
     });
-    $(function () {
+    display_basket(basket);
+
+    function display_basket(basket){
+        var panierString = "";
+        var index = 1;
+        panierString += "<h6>This is your list:</h6>";
+        for(var x in basket){
+            panierString += index + "=>";
+            panierString += document.getElementById("aa"+x).innerHTML +" ->Qte :" + basket[x] + "</br>";
+            index += 1;
+        }
         $('[data-toggle="popover"]').popover()
-        document.getElementById('basket').setAttribute('data-content', '<h6>This is your list</h6>')
-    })
+        document.getElementById('basket').setAttribute('data-content', panierString);
+
+
+
+    }
 </script>
  {% endblock %}
