@@ -1,24 +1,82 @@
 {% extends "shop/base.html" %}
 
 {% block content %} 
-
-<div class="row">
-    <div class="col-md-12">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Cras justo odio
-              <span class="badge badge-primary badge-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
-              <span class="badge badge-primary badge-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span class="badge badge-primary badge-pill">1</span>
-            </li>
+<div class="d-flex justify-content-center align-items-center vh-100"></div>
+  <div class="row">
+      <div class="col-md-6">
+          <ul class="list-group" id="item-list">
+            <h3 class="text-center navbar-brand font-weight-bold">This is your list:</h3>
           </ul>
-    </div>
+      </div>
+      <div class="col-md-6">  <!-- 12 /6 =  2 colone  --> 
+        <div>
+            <img src="https://freesvg.org/img/bpcomp-LibraryCheckout-approved.png" width="600px" height="500px" alt="">
+        </div>
+      </div>
+  </div>
+  
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Name</label>
+          <input type="text" class="form-control" id="inputEmail4" placeholder="shop-moh">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Email</label>
+          <input type="email" class="form-control" id="inputPassword4" placeholder="shop@gmail.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" name="city" id="city" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Country</label>
+          <select id="pays" name="pays" class="form-control">
+            <option selected>Maroc</option>
+            <option selected>Algerie</option>
+            <option selected>Egypt</option>
+            <option selected>Palastine</option>
+            <option selected>France</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input name="zipcode" id="zipcode" type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Order</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block js %} 
+
+  <script type="text/javascript">
+      if (localStorage.getItem('basket') == null){
+        var basket = {}
+      }else{
+        basket = JSON.parse(localStorage.getItem('basket'));
+      }
+
+      for (item in basket){
+        let name = basket[item][1];
+        let quantity = basket[item][0];
+        let ItemString = `<li class="list-group-item d-flex justify-content-between align-items-center">
+              ${name}
+              <span class="badge badge-primary badge-pill">QTE: ${quantity}</span>
+            </li>`;
+        $('#item-list').append(ItemString);
+      }
+      
+  </script>
 
 {% endblock %}
