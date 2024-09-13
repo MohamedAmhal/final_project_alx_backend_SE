@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Commande
 from django.core.paginator import Paginator
 
@@ -37,6 +37,8 @@ def Checkout(request):
         zip = request.POST.get('zipcode')
         commande = Commande(items=items, total=total, name=name, email=email, address=address, city=city, country=country, zip=zip)
         commande.save()
+
+        return redirect('confirmation')
     return render(request, 'shop/checkout.html')
 
 
