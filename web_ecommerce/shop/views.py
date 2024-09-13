@@ -39,3 +39,12 @@ def Checkout(request):
         commande.save()
     return render(request, 'shop/checkout.html')
 
+
+# create the third veiw confirmation:
+
+def confirmation(request):
+    info = Commande.objects.all()[: 1]
+    for item in info:
+        name = item.name
+    return render(request, 'shop/confirmation.html', {'name' : name})
+
