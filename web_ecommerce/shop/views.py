@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Commande
+from .models import Product, Commande, Category
 from django.core.paginator import Paginator
 
 # Create the first view
@@ -7,6 +7,7 @@ def index(request):
     # display images in frontend
     # 1. select all prduct that exist in the database
     product_object = Product.objects.all()
+    cat =Category.objects.all()
     # 2. search items
     item_name = request.GET.get('item-name')
     if item_name != '' and item_name is not None:
@@ -15,7 +16,7 @@ def index(request):
     paginator = Paginator(product_object, 10)
     page = request.GET.get('page')
     product_object = paginator.get_page(page)
-    return render(request, 'shop/index.html', {'product_object' : product_object})
+    return render(request, 'shop/index.html', {'product_object' : product_object, 'cat': cat})
 
 
 # create the second veiw product details:
@@ -49,4 +50,12 @@ def confirmation(request):
     for item in info:
         name = item.name
     return render(request, 'shop/confirmation.html', {'name' : name})
+
+
+# create the  view filtercategory:
+def Filter_cat(request, id):
+    cati = Category.objects.get(id=id)
+    product = Product.objects.filter(category=cati)
+    return render(request, 'shop/product_filter_category.html', {'product': product})
+
 

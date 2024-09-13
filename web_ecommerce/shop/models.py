@@ -21,7 +21,7 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     price = models.FloatField()
     description = models.TextField()
-    category = ForeignKey(Category, related_name='categorie', on_delete=models.CASCADE)
+    category = ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     image = models.CharField(max_length=5000)
     added_date = models.DateTimeField(auto_now=True)
 

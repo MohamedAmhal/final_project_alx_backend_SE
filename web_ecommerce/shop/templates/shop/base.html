@@ -232,9 +232,9 @@ header a:hover {
                             Categories
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            {% for c in cat %}
+                            <a class="dropdown-item" href="{% url 'filter' c.id %}">{{ c.name }}</a>
+                            {% endfor %}
                           </div>
                         </li>
                       </ul>

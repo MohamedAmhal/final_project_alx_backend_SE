@@ -1,0 +1,18 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    {% for p in product %}
+    <div class="col-md-2">
+        <div class="card">
+            <img src="{{ p.image }}" alt="" class="card-ing-top">
+            <div class="card-body">
+                <div id="aa{{ p.id }}" class="card-title">{{ p.title }}</div>
+                <div id="price{{ p.id }}" style="color: orange;" class="card-text" > {{ p.price }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endblock %}
