@@ -23,7 +23,7 @@
                 <img src="{{ p.image }}" alt="" class="card-ing-top">
                 <div class="card-body">
                     <div id="aa{{ p.id }}" class="card-title">{{ p.title }}</div>
-                    <div style="color: orange;" class="card-text" >MAD {{ p.price }}</div>
+                    <div id="price {{ p.id }}" style="color: orange;" class="card-text" >MAD {{ p.price }}</div>
                     <a href="{{ p.id }}" class="btn btn-warning">View</a>
                     <button id="{{ p.id }}" class="btn tdn btn-success">Add</button>
                 </div>
@@ -78,10 +78,12 @@
         if (basket[id_item] != undefined){
         quantity = basket[id_item][0] + 1;
         basket[id_item][0] = quantity ;
+        basket[id_item][2] += parseFloat(document.getElementById("price"+id_item).innerHTML);
         }else{
             quantity = 1 ;
+            price = document.getElementById("price"+id_item).innerHTML;
             name = document.getElementById("aa"+id_item).innerHTML;
-            basket[id_item] = [quantity, name]
+            basket[id_item] = [quantity, name, price];
         }
         console.log(basket);
         localStorage.setItem('basket', JSON.stringify(basket));
