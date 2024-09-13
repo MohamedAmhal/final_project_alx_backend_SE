@@ -36,6 +36,7 @@ class Product(models.Model):
 
 class Commande(models.Model):
     items = models.CharField(max_length=300)
+    total = models.CharField(max_length=200)
     name = models.CharField(max_length=150)
     email = models.EmailField()
     address = models.CharField(max_length=200)
