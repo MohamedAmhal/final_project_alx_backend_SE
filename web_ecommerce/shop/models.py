@@ -32,3 +32,18 @@ class Product(models.Model):
     # pour voir les noms apparitres dans la table admin panal
     def __str__(self):
         return self.title
+
+
+class Commande(models.Model):
+    items = models.CharField(max_length=300)
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    country = models.CharField(max_length=300)
+    zip = models.CharField(max_length=300)
+    command_date = models.DateTimeField(auto_now=True)
+
+
+    class Meta:
+        ordering = ['-command_date']
