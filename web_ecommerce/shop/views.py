@@ -26,5 +26,12 @@ def details(request, id_pro):
 
 # create the second veiw checkout:
 def Checkout(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        city = request.POST.get('city')
+        country = request.POST.get('pays')
+        zip = request.POST.get('zipcode')
     return render(request, 'shop/checkout.html')
 

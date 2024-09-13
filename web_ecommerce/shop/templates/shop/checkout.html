@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-6">  <!-- 12 /6 =  2 colone  --> 
         <div>
-            <img src="https://freesvg.org/img/bpcomp-LibraryCheckout-approved.png" width="600px" height="500px" alt="">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxP73W3MZe2MvtsRyLdzqY_h_0DZE-sB3Cg&s" width="600px" height="500px" alt="">
         </div>
       </div>
   </div>
@@ -18,7 +18,8 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <form>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Name</label>
@@ -50,7 +51,7 @@
         </div>
         <div class="form-group col-md-2">
           <label for="inputZip">Zip</label>
-          <input name="zipcode" id="zipcode" type="text" class="form-control" id="inputZip">
+          <input name="zipcode" id="zipcode" type="text" class="form-control" id="inputZip" placeholder="83000">
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Order</button>
