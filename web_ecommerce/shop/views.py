@@ -28,13 +28,14 @@ def details(request, id_pro):
 def Checkout(request):
     if request.method == "POST":
         items = request.POST.get('items')
+        total = request.POST.get('total')
         name = request.POST.get('name')
         email = request.POST.get('email')
         address = request.POST.get('address')
         city = request.POST.get('city')
         country = request.POST.get('pays')
         zip = request.POST.get('zipcode')
-        commande = Commande(items=items, name=name, email=email, address=address, city=city, country=country, zip=zip)
+        commande = Commande(items=items, total=total, name=name, email=email, address=address, city=city, country=country, zip=zip)
         commande.save()
     return render(request, 'shop/checkout.html')
 

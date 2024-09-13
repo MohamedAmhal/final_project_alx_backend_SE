@@ -44,7 +44,11 @@
             </div>
             <div class="form-group col-md-2">
               <label for="inputZip">Zip</label>
-              <input name="zipcode" id="zipcode" type="text" class="form-control" id="inputZip" placeholder="83000">
+              <input name="zipcode" id="zipcode" type="text" class="form-control" placeholder="83000">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputZip">The Total amount to pay: </label>
+              <input name="total" id="total" type="readonly" class="bg-dark text-warning form-control">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Order</button>
@@ -62,14 +66,14 @@
       }else{
         basket = JSON.parse(localStorage.getItem('basket'));
       }
-      var toatal = 0;
+      var total = 0;
       var number = 0;
       for (item in basket){
         let name = basket[item][1];
         let quantity = basket[item][0];
         let price = basket[item][2];
         number += quantity;
-        toatal += price;
+        total += price;
         let ItemString = `<li class="list-group-item d-flex justify-content-between align-items-center">
               ${name}
               <span class="badge badge-primary badge-pill">QTE: ${quantity}</span>
@@ -82,9 +86,9 @@
       let ItemNumber = `<li class="list-group-item d-flex justify-content-between align-items-center">
               <b class="bg-danger">Price and Total Quantity</b>
               <span class="badge badge-danger badge-pill">TOTAL QTE: ${number}</span>
-              <span class="badge badge-danger badge-pill">TOTAL PRICE: ${toatal}</span>
+              <span class="badge badge-danger badge-pill">TOTAL PRICE: ${total}</span>
             </li>`;
-
+        $('#total').val(total+" MAD");
         $('#item-list').append(ItemNumber);
 
       $('#items').val(JSON.stringify(basket));
