@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product, Commande
 from django.core.paginator import Paginator
 
 # Create the first view
@@ -33,5 +33,7 @@ def Checkout(request):
         city = request.POST.get('city')
         country = request.POST.get('pays')
         zip = request.POST.get('zipcode')
+        commande = Commande(name=name, email=email, address=address, city=city, country=country, zip=zip)
+        commande.save()
     return render(request, 'shop/checkout.html')
 
