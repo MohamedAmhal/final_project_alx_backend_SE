@@ -20,6 +20,7 @@
   <div class="col-md-12">
     <form method="POST">
       {% csrf_token %}
+      <input type="hidden" id="items" name="items">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Name</label>
@@ -77,6 +78,8 @@
             </li>`;
         $('#item-list').append(ItemString);
       }
+
+      $('#items').val(JSON.stringify(basket));
       
   </script>
 

@@ -13,7 +13,7 @@ class AdminProduct(admin.ModelAdmin):
 
 # displaying the features in panal tables (for Commande table) :
 class AdminCommande(admin.ModelAdmin):
-    list_display = ('name', 'email', 'address', 'city', 'zip', 'command_date')
+    list_display = ('items', 'name', 'email', 'address', 'city', 'zip', 'command_date')
 
 
 
