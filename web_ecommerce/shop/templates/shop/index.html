@@ -76,9 +76,12 @@
         var id_item = this.id.toString();
         console.log(id_item);
         if (basket[id_item] != undefined){
-            basket[id_item] = basket[id_item] + 1 ;
+        quantity = basket[id_item][0] + 1;
+        basket[id_item][0] = quantity ;
         }else{
-            basket[id_item] = 1 ;
+            quantity = 1 ;
+            name = document.getElementById("aa"+id_item).innerHTML;
+            basket[id_item] = [quantity, name]
         }
         console.log(basket);
         localStorage.setItem('basket', JSON.stringify(basket));
@@ -97,7 +100,7 @@
         panierString += "<h6>This is your list:</h6>";
         for(var x in basket){
             panierString += index + ".";
-            panierString += document.getElementById("aa"+x).innerHTML +" =>Qte :" + basket[x] + "</br>";
+            panierString += document.getElementById("aa"+x).innerHTML +" =>Qte :" + basket[x][0] + "</br>";
             index += 1;
         }
 
