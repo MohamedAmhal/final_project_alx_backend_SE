@@ -62,16 +62,30 @@
       }else{
         basket = JSON.parse(localStorage.getItem('basket'));
       }
-
+      var toatal = 0;
+      var number = 0;
       for (item in basket){
         let name = basket[item][1];
         let quantity = basket[item][0];
+        let price = basket[item][2];
+        number += quantity;
+        toatal += price;
         let ItemString = `<li class="list-group-item d-flex justify-content-between align-items-center">
               ${name}
               <span class="badge badge-primary badge-pill">QTE: ${quantity}</span>
+              <span class="badge badge-warning badge-pill"> ${price} MAD</span>
             </li>`;
+
         $('#item-list').append(ItemString);
       }
+
+      let ItemNumber = `<li class="list-group-item d-flex justify-content-between align-items-center">
+              <b class="bg-danger">Price and Total Quantity</b>
+              <span class="badge badge-danger badge-pill">TOTAL QTE: ${number}</span>
+              <span class="badge badge-danger badge-pill">TOTAL PRICE: ${toatal}</span>
+            </li>`;
+
+        $('#item-list').append(ItemNumber);
 
       $('#items').val(JSON.stringify(basket));
       
