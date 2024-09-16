@@ -1,5 +1,5 @@
 from django.urls import path
-from shop.views import index, details, Checkout, confirmation, Filter_cat
+from shop.views import index, details, Checkout, confirmation, Filter_cat, about, contact
 
 urlpatterns = [
     path('', index, name='Home'),
@@ -7,5 +7,7 @@ urlpatterns = [
     path('checkout', Checkout, name='checkout'),
     path('confirmation', confirmation, name='confirmation'),
     path('product/<id>', Filter_cat, name='filter'),
+    path('about', about, name='about'),
+    path('contact', contact, name='contact'),
 
 ]

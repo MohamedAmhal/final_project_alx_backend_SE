@@ -52,10 +52,18 @@ def confirmation(request):
     return render(request, 'shop/confirmation.html', {'name' : name})
 
 
-# create the  view filtercategory:
+# create the 5  view filtercategory:
 def Filter_cat(request, id):
     cati = Category.objects.get(id=id)
     product = Product.objects.filter(category=cati)
     return render(request, 'shop/product_filter_category.html', {'product': product})
+
+
+# create the 6 view about us page :
+def about(request):
+    return render(request, 'shop/about.html')
+
+def contact(request):
+    return render(request, 'shop/contact.html')
 
 

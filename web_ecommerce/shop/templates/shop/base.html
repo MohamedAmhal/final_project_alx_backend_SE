@@ -229,7 +229,7 @@ header a:hover {
                           <a class="nav-link font-weight-bold" href="{% url 'Home' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle nav-link font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="nav-link dropdown-toggle nav-link font-weight-bold" href="{% url 'Home' %}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categories
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -239,10 +239,10 @@ header a:hover {
                           </div>
                         </li>
                         <li class="nav-item active"></li>
-                          <a class="nav-link font-weight-bold" href="{% url 'Home' %}">About US <span class="sr-only">(current)</span></a>
+                          <a class="nav-link font-weight-bold" href="{% url 'about' %}">About US <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active"></li>
-                          <a class="nav-link font-weight-bold" href="{% url 'Home' %}">Contact US <span class="sr-only">(current)</span></a>
+                          <a class="nav-link font-weight-bold" href="{% url 'contact' %}">Contact US <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item basket-container">
                           <img src="https://as1.ftcdn.net/v2/jpg/03/14/85/06/1000_F_314850659_2aQLerz30kWj78tqpaGSbzYD6sAUmuDf.jpg" alt="Logo" class="basket-logo">
@@ -251,8 +251,16 @@ header a:hover {
                           data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
                               Basket(0)
                           </button>
-                      </li>
-                      </ul>
+                        </li>
+                        <li class="nav-item basket-container">
+                            <a href="{% url 'Home' %}">
+                                <img src="https://as1.ftcdn.net/v2/jpg/03/14/85/06/1000_F_314850659_2aQLerz30kWj78tqpaGSbzYD6sAUmuDf.jpg" alt="Logo" class="basket-logo">
+                                <button id="delete"  type="button" class="btn moh btn-secondary"  >
+                                Rest my basket
+                                </button>
+                            </a>
+                        </li>
+                        </ul>
                       
                     </div>
                   </nav>

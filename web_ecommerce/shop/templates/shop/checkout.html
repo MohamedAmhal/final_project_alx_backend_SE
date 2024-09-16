@@ -12,29 +12,29 @@
         <h3></h3> 
         <form method="POST">
           {% csrf_token %}
-          <input type="hidden" id="items" name="items">
+          <input type="hidden" id="items" name="items" required>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail4">Name</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="shop-moh">
+              <input type="text" class="form-control" id="name" name="name" placeholder="shop-moh" required>
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Email</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="shop@gmail.com">
+              <input type="email" class="form-control" id="email" name="email" placeholder="shop@gmail.com" required>
             </div>
           </div>
           <div class="form-group">
             <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+            <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputCity">City</label>
-              <input type="text" name="city" id="city" class="form-control" id="inputCity">
+              <input type="text" name="city" id="city" class="form-control" id="inputCity" required>
             </div>
             <div class="form-group col-md-4">
               <label for="inputState">Country</label>
-              <select id="pays" name="pays" class="form-control">
+              <select id="pays" name="pays" class="form-control" required>
                 <option selected>Maroc</option>
                 <option selected>Algerie</option>
                 <option selected>Egypt</option>
@@ -44,14 +44,14 @@
             </div>
             <div class="form-group col-md-2">
               <label for="inputZip">Zip</label>
-              <input name="zipcode" id="zipcode" type="text" class="form-control" placeholder="83000">
+              <input name="zipcode" id="zipcode" type="text" class="form-control" placeholder="83000" required>
             </div>
             <div class="form-group col-md-4">
               <label for="inputZip">The Total amount to pay: </label>
-              <input name="total" id="total" type="readonly" class="bg-dark text-warning form-control">
+              <input name="total" id="total" type="readonly" class="bg-dark text-warning form-control" readonly >
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Order</button>
+          <button type="submit" id="subm" class="btn tddn btn-primary" oninput="verifier()" disabled>Order</button>
         </form>
       </div>
   </div>
@@ -86,12 +86,29 @@
       let ItemNumber = `<li class="list-group-item d-flex justify-content-between align-items-center">
               <b class="bg-danger">Price and Total Quantity</b>
               <span class="badge badge-danger badge-pill">TOTAL QTE: ${number}</span>
-              <span class="badge badge-danger badge-pill">TOTAL PRICE: ${total}</span>
+              <span class="badge badge-danger badge-pill">TOTAL PRICE: ${total} MAD</span>
             </li>`;
-        $('#total').val(total+" MAD");
-        $('#item-list').append(ItemNumber);
+        
+      $('#total').val(total+" MAD");
+        
+      $('#item-list').append(ItemNumber);
 
       $('#items').val(JSON.stringify(basket));
+
+      $(document).on('click', '.tddn', function(){
+        localStorage.clear();
+      });
+
+      function verifier(){
+        var price = document.getElementById("total").value;
+        console.log(price);
+        var bouton = document.getElementById("subm");
+        if(price === "0 MAD"){
+          bouton.disabled = true;
+        }else{
+          bouton.disabled = false;
+        }
+      }
       
   </script>
 

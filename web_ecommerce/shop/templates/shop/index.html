@@ -23,7 +23,7 @@
                 <img src="{{ p.image }}" alt="" class="card-ing-top">
                 <div class="card-body">
                     <div id="aa{{ p.id }}" class="card-title">{{ p.title }}</div>
-                    <div id="price{{ p.id }}" style="color: orange;" class="card-text" > {{ p.price }}</div>
+                    <div id="price{{ p.id }}" style="color: orange;" class="card-text" > {{ p.price }} MAD</div>
                     <a href="{{ p.id }}" class="btn btn-warning">View</a>
                     <button id="{{ p.id }}" class="btn tdn btn-success">Add</button>
                 </div>
@@ -70,6 +70,11 @@
     }
 
 
+    $(document).on('click', '.moh', function(){
+        localStorage.clear();
+        console.log('cleared');
+    });
+
 
     $(document).on('click', '.tdn', function(){
         console.log('add');
@@ -107,6 +112,7 @@
         }
 
         panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
+
 
         $('[data-toggle="popover"]').popover()
         document.getElementById('basket').setAttribute('data-content', panierString);

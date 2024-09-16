@@ -35,14 +35,14 @@ class Product(models.Model):
 
 
 class Commande(models.Model):
-    items = models.CharField(max_length=300)
-    total = models.CharField(max_length=200)
-    name = models.CharField(max_length=150)
-    email = models.EmailField()
-    address = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    country = models.CharField(max_length=300)
-    zip = models.CharField(max_length=300)
+    items = models.CharField(max_length=300, null=False, blank=False)
+    total = models.CharField(max_length=200, null=False, blank=False)
+    name = models.CharField(max_length=150, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    address = models.CharField(max_length=200, null=False, blank=False)
+    city = models.CharField(max_length=200, null=False, blank=False)
+    country = models.CharField(max_length=300, null=False, blank=False)
+    zip = models.CharField(max_length=300, null=False, blank=False)
     command_date = models.DateTimeField(auto_now=True)
 
 
