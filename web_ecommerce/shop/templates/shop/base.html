@@ -39,15 +39,110 @@
         }
         .container {
     
-    padding-right: 0px; 
-    padding-left: 0px;
-    padding-left: 0%;
-    padding-right: 0%;
-    max-width: 100%;
+            padding-right: 0px; 
+            padding-left: 0px;
+            padding-left: 0%;
+            padding-right: 0%;
+            max-width: 100%;
         }
 
-      /* Global Reset and Font Settings */
-* {
+        .logo {
+            width: 60px; 
+            height: auto;
+            margin-right: 10px; 
+        }
+        .shop-name {
+            font-family: 'Roboto', sans-serif; 
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px; 
+            color: #333; 
+        } 
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        } 
+        nav a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif; 
+            color: #333;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff7f50; 
+        }
+
+        .basket-container {
+            display: flex;
+            align-items: center; 
+            gap: 10px;
+            margin-left: auto; 
+        }
+
+        .basket-logo {
+            width: 30px; 
+            height: auto;
+            border-radius: 50%;
+        }
+
+        #basket {
+            background-color: #4CAF50; 
+            color: white;
+            font-family: 'Roboto', sans-serif; 
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; 
+        }
+
+
+        #basket:hover {
+            background-color: #45a049; 
+        }
+
+
+        
+        .moh {
+            display: flex;
+            align-items: center; 
+            gap: 10px;
+        }
+
+
+        
+
+
+        #delete {
+            background-color: #f44336; 
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; 
+        }
+
+
+        #delete:hover {
+            background-color: #e53935; 
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Espace entre les éléments */
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -233,6 +328,7 @@ header a:hover {
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <img src="https://simicart.com/wp-content/uploads/eCommerce-logo.jpg" alt="Company Logo" class="logo">
                     <a class="navbar-brand font-weight-bold" href="{% url 'Home' %}">MohamedShop</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
@@ -268,7 +364,6 @@ header a:hover {
                         </li>
                         <li class="nav-item basket-container">
                             <a href="{% url 'Home' %}">
-                                <img src="https://as1.ftcdn.net/v2/jpg/03/14/85/06/1000_F_314850659_2aQLerz30kWj78tqpaGSbzYD6sAUmuDf.jpg" alt="Logo" class="basket-logo">
                                 <button id="delete"  type="button" class="btn moh btn-secondary"  >
                                 Rest my basket
                                 </button>
