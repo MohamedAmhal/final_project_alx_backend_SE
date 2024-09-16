@@ -9,4 +9,21 @@
     </div>
 </div>
 
+
+{% block js %}
+
+<script>
+    function rest_localStorage(){
+
+        localStorage.clear();
+        console.log('cleared!');
+    };
+
+    rest_localStorage();
+
+
+</script>
+
+{% endblock %}
+
 {% endblock %}

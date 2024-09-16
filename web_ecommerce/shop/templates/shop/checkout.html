@@ -51,7 +51,7 @@
               <input name="total" id="total" type="readonly" class="bg-dark text-warning form-control" readonly >
             </div>
           </div>
-          <button type="submit" id="subm" class="btn tddn btn-primary" oninput="verifier()" disabled>Order</button>
+          <button type="submit" id="subm" class="btn tddn btn-primary" oninput="checkTotalAmount()" disabled>Order</button>
         </form>
       </div>
   </div>
@@ -94,22 +94,28 @@
       $('#item-list').append(ItemNumber);
 
       $('#items').val(JSON.stringify(basket));
-
-      $(document).on('click', '.tddn', function(){
-        localStorage.clear();
-      });
-
-      function verifier(){
-        var price = document.getElementById("total").value;
-        console.log(price);
-        var bouton = document.getElementById("subm");
-        if(price === "0 MAD"){
-          bouton.disabled = true;
-        }else{
-          bouton.disabled = false;
-        }
-      }
       
+      //$(document).on('click', '.tddn', function(){
+        //localStorage.clear();
+      //});
+
+      let submitButton = document.getElementById('subm');
+      let to = document.getElementById('total');
+      
+
+      // This function checks the total and enables/disables the button
+      function checkTotalAmount() { 
+          let totalAmount = parseFloat(to.value.replace("MAD", "").trim());
+
+          if (totalAmount === 0) {
+              submitButton.disabled = true;  // Disable the button if total is 0
+          } else {
+              submitButton.disabled = false; // Enable the button for any positive value
+          }
+    };
+    checkTotalAmount();
+
+
   </script>
 
 {% endblock %}
