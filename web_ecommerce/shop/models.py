@@ -33,6 +33,7 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+# class commande
 
 class Commande(models.Model):
     items = models.CharField(max_length=300, null=False, blank=False)
@@ -52,6 +53,7 @@ class Commande(models.Model):
     def __str__(self):
         return self.name
 
+# class reporte 
 
 class Reporte(models.Model):
     first_name = models.CharField(max_length=200, null=False, blank=False)
