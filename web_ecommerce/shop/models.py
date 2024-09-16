@@ -51,3 +51,19 @@ class Commande(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Reporte(models.Model):
+    first_name = models.CharField(max_length=200, null=False, blank=False)
+    last_name = models.CharField(max_length=200, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    phone = models.CharField(max_length=400, null=False, blank=False)
+    message = models.CharField(max_length=800)
+    added_date = models.DateTimeField(auto_now=True)
+
+
+    class Meta:
+        ordering = ['-added_date']
+
+    def __str__(self):
+        return self.first_name

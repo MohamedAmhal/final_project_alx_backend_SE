@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Commande
+from .models import Category, Product, Commande, Reporte
 
 
 #parameters of the admin page 
@@ -26,6 +26,12 @@ class AdminCommande(admin.ModelAdmin):
     list_editable = ('name', 'email', 'address', 'city', 'total',)
 
 
+# displaying the features in panal tables (for Reporte table) :
+class AdminReporte(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'phone', 'added_date')
+    search_fields = ('first_name', )
+
+
 
 # register the model product.
 admin.site.register(Product, AdminProduct)
@@ -35,3 +41,6 @@ admin.site.register(Category, AdminCategory)
 
 # register the model Commande.
 admin.site.register(Commande, AdminCommande)
+
+# register the model Reporte.
+admin.site.register(Reporte, AdminReporte)
