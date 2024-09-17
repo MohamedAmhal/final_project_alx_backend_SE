@@ -62,6 +62,8 @@
 {% block js %}
 
 <script type="text/javascript">
+    // checking the basket if exist or not in the local storage :
+
     if (localStorage.getItem('basket') == null)
     {
         var basket = {};
@@ -70,26 +72,32 @@
     }
 
 
+    // if the user click to the bt rest your basket the localstorage is automaticlyyy cleared :
     $(document).on('click', '.moh', function(){
         localStorage.clear();
         console.log('cleared');
     });
 
 
+    // the logic of the bt basket and the list to ckechout page :
     $(document).on('click', '.tdn', function(){
         console.log('add');
         var id_item = this.id.toString();
         console.log(id_item);
+
+
         if (basket[id_item] != undefined){
-        quantity = basket[id_item][0] + 1;
-        basket[id_item][0] = quantity ;
-        basket[id_item][2] += parseFloat(document.getElementById("price"+id_item).innerHTML);
+            quantity = basket[id_item][0] + 1;
+            basket[id_item][0] = quantity ;
+            basket[id_item][2] += parseFloat(document.getElementById("price"+id_item).innerHTML);
         }else{
             quantity = 1 ;
             price = parseFloat(document.getElementById("price"+id_item).innerHTML);
             name = document.getElementById("aa"+id_item).innerHTML;
             basket[id_item] = [quantity, name, price];
-        }
+        };
+
+
         console.log(basket);
         localStorage.setItem('basket', JSON.stringify(basket));
         document.getElementById('basket').innerHTML = 'Basket(' + Object.keys(basket).length + ')';
@@ -100,7 +108,7 @@
     display_basket(basket);
 
 
-
+    // function to display the basket in the list:
     function display_basket(basket){
         var panierString = "";
         var index = 1;
@@ -114,8 +122,9 @@
         panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
 
 
+        // display the basket :
         $('[data-toggle="popover"]').popover()
         document.getElementById('basket').setAttribute('data-content', panierString);
-    };
+        };
 </script>
- {% endblock %}
+{% endblock %}
