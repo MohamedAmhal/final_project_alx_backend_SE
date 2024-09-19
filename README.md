@@ -27,7 +27,6 @@ This repository contains the backend development of an e-commerce application, d
 - **Backend Framework:** [ Django ]
 - **Database:** [ MySQL ]
 - **Payment Gateway:** [ manual ]
-- **API Documentation:** Swagger / Postman
 
 ## Installation
 
